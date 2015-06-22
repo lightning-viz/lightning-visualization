@@ -1,0 +1,14 @@
+{
+  "name": "lightning-visualization",
+  "version": "0.0.0",
+  "description": "Base class to be extended for lightning-visualizations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.9.3"
+  }
+}
