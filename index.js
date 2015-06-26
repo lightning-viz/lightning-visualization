@@ -1,6 +1,5 @@
 var _ = require('lodash');
 
-
 var LightningVisualization = function(selector, data, images, opts) {
     this.opts = opts || {};
     
@@ -39,14 +38,9 @@ LightningVisualization.prototype.appendData = function(data) {
     console.warn('appendData not implemented');
 }
 
-
-LightningVisualization.prototype._wrapDataFunction = function(fn) {
-    return function(data) {
-        var d = this.formatData(data);
-        return fn(d);
-    };
+LightningVisualization.prototype.appendData = function(data) {
+    console.warn('appendData not implemented');
 }
-
 
 // Modified from backbone.js
 LightningVisualization.extend = function(protoProps, staticProps) {
@@ -56,7 +50,11 @@ LightningVisualization.extend = function(protoProps, staticProps) {
     var wrapFuncs = ['appendData', 'updateData'];
     _.each(wrapFuncs, function(d) {
         if(protoProps[d]) {
-            protoProps[d] = this._wrapDataFunction(protoProps[d]);
+            var fn = protoProps[d];
+            protoProps[d] = function(data) {
+                var d = this.formatData(data);
+                return fn.call(this, d);
+            };
         }
     });
 
