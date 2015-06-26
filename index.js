@@ -38,15 +38,15 @@ LightningVisualization.prototype.appendData = function(data) {
     console.warn('appendData not implemented');
 }
 
-LightningVisualization.prototype.appendData = function(data) {
-    console.warn('appendData not implemented');
-}
 
 // Modified from backbone.js
 LightningVisualization.extend = function(protoProps, staticProps) {
     var parent = this;
     var child;
 
+    // Wrap these functions so that the user can assume
+    // the data has already been formatted by the time
+    // it gets here.
     var wrapFuncs = ['appendData', 'updateData'];
     _.each(wrapFuncs, function(d) {
         if(protoProps[d]) {
