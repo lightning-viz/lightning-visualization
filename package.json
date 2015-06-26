@@ -1,6 +1,6 @@
 {
   "name": "lightning-visualization",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Base class to be extended for lightning-visualizations",
   "main": "index.js",
   "scripts": {
