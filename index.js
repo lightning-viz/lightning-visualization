@@ -1,4 +1,8 @@
+
 var _ = require('lodash');
+var insertCSS = require('insert-css');
+var stylesInitialized = false;
+
 
 var LightningVisualization = function(selector, data, images, opts) {
     this.opts = opts || {};
@@ -8,6 +12,10 @@ var LightningVisualization = function(selector, data, images, opts) {
     
     this.data = this.formatData(data);
     this.selector = selector;
+    if(this.styles && !stylesInitialized) {
+        insertCSS(this.styles);
+        stylesInitialized = true;
+    }
     this.init();
 };
 
