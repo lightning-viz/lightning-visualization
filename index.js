@@ -11,6 +11,8 @@ var LightningVisualization = function(selector, data, images, opts) {
     this.height = (this.opts.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
     
     this.data = this.formatData(data);
+    this.images = images || [];
+
     this.selector = selector;
     if(this.styles && !stylesInitialized) {
         insertCSS(this.styles);
