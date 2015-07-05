@@ -1,10 +1,10 @@
-
 var _ = require('lodash');
 var insertCSS = require('insert-css');
+var inherits = require('inherits');
 var stylesInitialized = false;
 
-
 var LightningVisualization = function(selector, data, images, opts) {
+
     this.opts = opts || {};
     
     this.width = (this.opts.width || $(selector).width());
@@ -20,6 +20,8 @@ var LightningVisualization = function(selector, data, images, opts) {
     }
     this.init();
 };
+
+inherits(LightningVisualization, require('events').EventEmitter);
 
 
 LightningVisualization.prototype.init = function() {

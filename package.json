@@ -9,6 +9,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "inherits": "^2.0.1",
     "insert-css": "^0.2.0",
     "lodash": "^3.9.3"
   }
