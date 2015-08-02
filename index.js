@@ -3,19 +3,20 @@ var insertCSS = require('insert-css');
 var inherits = require('inherits');
 var stylesInitialized = false;
 
-var LightningVisualization = function(selector, data, images, opts) {
+var LightningVisualization = function(selector, data, images, options) {
 
-    this.opts = opts || {};
+    this.options = _.defaults(options || {}, this.getDefaultOptions());
+    this.styles = this.getDefaultStyles();
     
-    this.width = (this.opts.width || $(selector).width());
-    this.height = (this.opts.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
+    this.width = (this.options.width || $(selector).width());
+    this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
     
     this.data = this.formatData(data);
     this.images = images || [];
 
     this.selector = selector;
-    if(this.styles && !stylesInitialized) {
-        insertCSS(this.styles);
+    if(this.css && !stylesInitialized) {
+        insertCSS(this.css);
         stylesInitialized = true;
     }
     this.init();
@@ -23,6 +24,13 @@ var LightningVisualization = function(selector, data, images, opts) {
 
 inherits(LightningVisualization, require('events').EventEmitter);
 
+LightningVisualization.prototype.getDefaultOptions = function() {
+    return {};
+}
+
+LightningVisualization.prototype.getDefaultStyles = function() {
+    return {};
+}
 
 LightningVisualization.prototype.init = function() {
     console.warn('init not implemented');
