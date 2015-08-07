@@ -4,13 +4,20 @@
   "description": "Base class to be extended for lightning-visualizations",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "wd": "mochify --wd",
+    "cover": "mochify --cover",
+    "test": "mochify"
   },
-  "author": "",
+  "author": "Matthew Conlen",
   "license": "MIT",
   "dependencies": {
     "inherits": "^2.0.1",
     "insert-css": "^0.2.0",
-    "lodash": "^3.9.3"
+    "lodash": "^3.9.3",
+    "qwery": "^4.0.0"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mochify": "^2.12.0"
   }
 }
