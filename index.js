@@ -2,14 +2,12 @@ var _ = require('lodash');
 var insertCSS = require('insert-css');
 var inherits = require('inherits');
 var qwery = require('qwery');
-var stylesInitialized = false;
 
 var LightningVisualization = function(selector, data, images, options) {
 
     this.options = _.defaults(options || {}, this.getDefaultOptions());
-    this.styles = this.getDefaultStyles();
-    
-    this.width = (this.options.width || qwery(selector).offsetWidth);
+    this.styles = this.getDefaultStyles();    
+    this.width = (this.options.width || qwery(selector)[0].offsetWidth);
     this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
     
     this.data = this.formatData(data);
