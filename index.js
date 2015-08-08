@@ -6,8 +6,9 @@ var qwery = require('qwery');
 var LightningVisualization = function(selector, data, images, options) {
 
     this.options = _.defaults(options || {}, this.getDefaultOptions());
-    this.styles = this.getDefaultStyles();    
-    this.width = (this.options.width || qwery(selector)[0].offsetWidth);
+    this.styles = this.getDefaultStyles();
+    this.el = qwery(selector)[0];
+    this.width = (this.options.width || this.el.offsetWidth);
     this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
     
     this.data = this.formatData(data);
