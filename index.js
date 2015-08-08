@@ -16,10 +16,6 @@ var LightningVisualization = function(selector, data, images, options) {
     this.images = images || [];
 
     this.selector = selector;
-    if(this.css && !stylesInitialized) {
-        insertCSS(this.css);
-        stylesInitialized = true;
-    }
     this.init();
 };
 
@@ -85,7 +81,14 @@ LightningVisualization.extend = function(protoProps, staticProps) {
     if (protoProps && _.has(protoProps, 'constructor')) {
         child = protoProps.constructor;
     } else {
-        child = function(){ return parent.apply(this, arguments); };
+        child = function(){
+            if(this.css && !child._stylesInitialized) {
+                insertCSS(this.css);
+                child._stylesInitialized = true;
+            }
+            return parent.apply(this, arguments);
+        };
+        child._initializedStyles = false;
     }
 
     // Add static properties to the constructor function, if supplied.
