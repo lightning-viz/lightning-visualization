@@ -7,6 +7,7 @@ var LightningVisualization = function(selector, data, images, options) {
 
     this.options = _.defaults(options || {}, this.getDefaultOptions());
     this.styles = this.getDefaultStyles();
+    this.qwery = qwery;
     this.el = qwery(selector)[0];
     this.width = (this.options.width || this.el.offsetWidth);
     this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
