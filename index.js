@@ -12,7 +12,7 @@ var LightningVisualization = function(selector, data, images, options) {
     this.width = (this.options.width || this.el.offsetWidth);
     this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
     
-    this.data = this.formatData(data);
+    this.data = this.formatData(data || {});
     this.images = images || [];
 
     this.selector = selector;
