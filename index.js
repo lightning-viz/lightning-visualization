@@ -2,8 +2,13 @@ var _ = require('lodash');
 var insertCSS = require('insert-css');
 var inherits = require('inherits');
 var qwery = require('qwery');
+var isarray = require('isarray')
 
 var LightningVisualization = function(selector, data, images, options) {
+    if (!options && !isarray(images) && typeof images === 'object') {
+        options = images
+        images = null
+    }
 
     this.options = _.defaults(options || {}, this.getDefaultOptions());
     this.styles = this.getDefaultStyles();
