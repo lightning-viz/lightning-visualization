@@ -11,6 +11,7 @@
   "author": "Matthew Conlen",
   "license": "MIT",
   "dependencies": {
+    "bonzo": "^2.0.0",
     "inherits": "^2.0.1",
     "insert-css": "^0.2.0",
     "isarray": "^1.0.0",

@@ -2,7 +2,12 @@ var _ = require('lodash');
 var insertCSS = require('insert-css');
 var inherits = require('inherits');
 var qwery = require('qwery');
-var isarray = require('isarray')
+var isarray = require('isarray');
+var bonzo = require('bonzo');
+
+function $(selector) {
+  return bonzo(qwery(selector))
+}
 
 var LightningVisualization = function(selector, data, images, options) {
     if (!options && !isarray(images) && typeof images === 'object') {
@@ -13,10 +18,11 @@ var LightningVisualization = function(selector, data, images, options) {
     this.options = _.defaults(options || {}, this.getDefaultOptions());
     this.styles = this.getDefaultStyles();
     this.qwery = qwery;
-    this.el = qwery(selector)[0];
+    this.$el = $(selector)
+    this.el = this.$el[0];
     this.width = (this.options.width || this.el.offsetWidth);
     this.height = (this.options.height || (this.getHeight ? this.getHeight() : this.width * 0.6));
-    
+
     this.data = this.formatData(data || {});
     this.images = images || [];
 
@@ -118,4 +124,3 @@ LightningVisualization.extend = function(protoProps, staticProps) {
 
 
 module.exports = LightningVisualization;
-
